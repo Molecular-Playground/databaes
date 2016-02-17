@@ -21,8 +21,7 @@ docker cp db.sql postgres:/home
 docker exec -i -t postgres bash
 
 # navigate to the the init file and initialize the database
-$ cd /home
-$ psql -f db.sql postgres postgres
+$ psql -f /home/db.sql postgres postgres
 
 # exit the postgres container, you are done!
 $ exit

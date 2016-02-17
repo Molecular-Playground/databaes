@@ -5,20 +5,20 @@ All installation is done automatically through docker. If you do not have docker
 ### To Run
 From inside docker virtual machine, navigate to the top directory of this repository. Enter the following command:
 ```
-docker run --name some-postgres -e POSTGRES_PASSWORD=dankmemes -d postgres
+docker run --name postgres -e POSTGRES_PASSWORD=dankmemes -d postgres
 ```
 
 ### Initialize the database for the first time
 To initialize the postgres database for the first time, follow the following steps:
 ```
 # create a postgres container with the corresponding tags
-docker run --name some-postgres -e POSTGRES_PASSWORD=dankmemes -d postgres
+docker run --name postgres -e POSTGRES_PASSWORD=dankmemes -d postgres
 
 # copy the init file into the postgres container
-docker cp db.sql some-postgres:/home
+docker cp db.sql postgres:/home
 
 # begin shell inside of the postgres container
-docker exec -i -t some-postgres bash
+docker exec -i -t postgres bash
 
 # navigate to the the init file and initialize the database
 $ cd /home

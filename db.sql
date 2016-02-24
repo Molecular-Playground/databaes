@@ -33,7 +33,9 @@ CREATE TABLE Molecules
 CREATE TABLE Playlists
 (
 	pid Serial PRIMARY KEY,
-	uid int REFERENCES Users(uid) NOT NULL
+	uid int REFERENCES Users(uid) NOT NULL,
+	name varchar(25) NOT NULL,
+	date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE PlaysPlayList

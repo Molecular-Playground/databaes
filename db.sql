@@ -38,8 +38,8 @@ CREATE TABLE Playlists
 
 CREATE TABLE PlaysPlayList
 (
-	sid int REFERENCES Schedule(sid),
-	pid int REFERENCES Playlists(pid)
+	sid int REFERENCES Schedule(sid) NOT NULL,
+	pid int REFERENCES Playlists(pid) NOT NULL
 );
 
 CREATE TABLE PlaysMolecule

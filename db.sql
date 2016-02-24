@@ -21,7 +21,7 @@ CREATE TABLE Schedule
 (
 	sid Serial PRIMARY KEY,
 	uid int REFERENCES Users(uid) NOT NULL,
-	metadata TEXT
+	metadata JSON
 );
 
 CREATE TABLE Molecules
@@ -35,17 +35,13 @@ CREATE TABLE Playlists
 	pid Serial PRIMARY KEY,
 	uid int REFERENCES Users(uid) NOT NULL,
 	name varchar(25) NOT NULL,
+	molecules JSON,
 	date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE PlaysPlayList
+CREATE TABLE Plays
 (
 	sid int REFERENCES Schedule(sid) NOT NULL,
-	pid int REFERENCES Playlists(pid) NOT NULL
-);
-
-CREATE TABLE PlaysMolecule
-(
 	pid int REFERENCES Playlists(pid) NOT NULL,
-	mid int REFERENCES Molecules(mid) NOT NULL
+	PRIMARY KEY(sid, pid)
 );

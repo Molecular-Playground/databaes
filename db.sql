@@ -2,7 +2,8 @@ DROP TABLE if exists Users CASCADE;
 DROP TABLE if exists Schedule CASCADE;
 DROP TABLE if exists Playlists CASCADE;
 DROP TABLE if exists Molecules CASCADE;
-DROP TABLE if exists Plays CASCADE;
+DROP TABLE if exists PlaysPlayList CASCADE;
+DROP TABLE if exists PlaysMolecule CASCADE;
 
 CREATE TABLE Users
 (
@@ -26,19 +27,23 @@ CREATE TABLE Schedule
 CREATE TABLE Molecules
 (
 	mid Serial PRIMARY KEY,
-	molecule TEXT NOT NULL
+	molecule varchar(255) NOT NULL
 );
 
 CREATE TABLE Playlists
 (
 	pid Serial PRIMARY KEY,
-	uid int REFERENCES Users(uid) NOT NULL,
-	mid int REFERENCES Molecules(mid) NOT NULL
+	uid int REFERENCES Users(uid) NOT NULL
 );
 
-CREATE TABLE Plays
+CREATE TABLE PlaysPlayList
 (
 	sid int REFERENCES Schedule(sid),
-	pid int REFERENCES Playlists(pid),
-	PRIMARY KEY (sid, pid)
+	pid int REFERENCES Playlists(pid)
+);
+
+CREATE TABLE PlaysMolecule
+(
+	pid int REFERENCES Playlists(pid) NOT NULL,
+	mid int REFERENCES Molecules(mid) NOT NULL
 );

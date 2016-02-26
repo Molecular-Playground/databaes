@@ -11,10 +11,7 @@ docker run --name postgres -e POSTGRES_PASSWORD=dankmemes -d postgres
 ### Initialize the database for the first time
 To initialize the postgres database for the first time, follow the following steps:
 ```
-# create a postgres container with the corresponding tags
-docker run --name postgres -e POSTGRES_PASSWORD=dankmemes -d postgres
-
-# copy the init file into the postgres container
+# copy the init file into the running postgres container
 docker cp db.sql postgres:/home
 
 # begin shell inside of the postgres container

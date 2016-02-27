@@ -1,4 +1,4 @@
-FROM postgres:9.4
+FROM postgres:9.5.1
 ARG BUILD_TYPE=release
 ENV POSTGRES_PASSWORD=dankmemes
 

@@ -31,10 +31,3 @@ CREATE TABLE IF NOT EXISTS Playlists
 	molecules JSON,
 	date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-CREATE TABLE IF NOT EXISTS Plays
-(
-	sid int REFERENCES Schedule(sid) NOT NULL,
-	pid int REFERENCES Playlists(pid) NOT NULL,
-	PRIMARY KEY(sid, pid)
-);

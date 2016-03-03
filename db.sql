@@ -13,8 +13,18 @@ CREATE TABLE IF NOT EXISTS Users
 CREATE TABLE IF NOT EXISTS Schedule
 (
 	sid Serial PRIMARY KEY,
-	uid int REFERENCES Users(uid) NOT NULL,
-	metadata JSON
+	uid int REFERENCES Users(uid) ON DELETE CASCADE,
+	schedule JSON
+);
+
+
+CREATE TABLE IF NOT EXISTS Playlists
+(
+	pid Serial PRIMARY KEY,
+	uid int REFERENCES Users(uid) ON DELETE CASCADE,
+	name varchar(25) NOT NULL,
+	molecules JSON,
+	date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS Molecules
@@ -23,14 +33,6 @@ CREATE TABLE IF NOT EXISTS Molecules
 	molecule varchar(255) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS Playlists
-(
-	pid Serial PRIMARY KEY,
-	uid int REFERENCES Users(uid) NOT NULL,
-	name varchar(25) NOT NULL,
-	molecules JSON,
-	date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
 
 CREATE INDEX IF NOT EXISTS Usernames ON Users USING hash (username);
 CREATE INDEX IF NOT EXISTS Emails ON Users USING hash (email);

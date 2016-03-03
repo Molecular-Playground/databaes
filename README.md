@@ -18,3 +18,11 @@ To persist your data we suggest using a volume. If you already have used the doc
 docker volume create --name hello
 # where hello is the name of your volume
 ```
+
+###Insert Test Data
+To insert data into a CLEAN database, run the following
+```
+docker cp insertData.sql postgres:/
+docker exec -it postgres /bin/bash
+psql -f insertData.sql postgres postgres
+```

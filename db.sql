@@ -31,3 +31,7 @@ CREATE TABLE IF NOT EXISTS Playlists
 	molecules JSON,
 	date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE INDEX IF NOT EXISTS Usernames ON Users USING hash (username);
+CREATE INDEX IF NOT EXISTS Emails ON Users USING hash (email);
+CREATE INDEX IF NOT EXISTS UserPlaylists ON Playlists USING hash (uid);;

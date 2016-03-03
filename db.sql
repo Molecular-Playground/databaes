@@ -34,4 +34,4 @@ CREATE TABLE IF NOT EXISTS Playlists
 
 CREATE INDEX IF NOT EXISTS Usernames ON Users USING hash (username);
 CREATE INDEX IF NOT EXISTS Emails ON Users USING hash (email);
-CREATE INDEX IF NOT EXISTS UserPlaylists ON Playlists USING hash (uid);;
+CREATE INDEX IF NOT EXISTS UserPlaylists ON Playlists USING hash (uid);

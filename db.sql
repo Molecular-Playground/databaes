@@ -33,6 +33,19 @@ CREATE TABLE IF NOT EXISTS Molecules
 	link varchar(255) NOT NULL
 );
 
+CREATE OR REPLACE FUNCTION insert_schedule() RETURNS trigger AS $$
+    BEGIN
+        INSERT INTO Schedule(uid, schedule) VALUES(NEW.uid, '[]');
+        RETURN NEW;
+    END;
+$$ LANGUAGE plpgsql;
+
+
+DROP TRIGGER IF EXISTS User_Inserted ON Users;
+CREATE TRIGGER User_Inserted 
+	AFTER INSERT ON Users
+	FOR EACH ROW
+	EXECUTE PROCEDURE insert_schedule();
 
 CREATE INDEX IF NOT EXISTS Usernames ON Users USING hash (username);
 CREATE INDEX IF NOT EXISTS Emails ON Users USING hash (email);

@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS Playlists
 	pid Serial PRIMARY KEY,
 	uid int REFERENCES Users(uid) ON DELETE CASCADE,
 	name varchar(25) NOT NULL,
-	molecules JSON,
+	playlist JSON,
 	date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

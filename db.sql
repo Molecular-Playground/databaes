@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS Playlists
 CREATE TABLE IF NOT EXISTS Molecules
 (
 	mid Serial PRIMARY KEY,
+	name varchar(255) UNIQUE,
 	link varchar(255) NOT NULL
 );
 

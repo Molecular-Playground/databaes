@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS Users
 (
 	uid Serial PRIMARY KEY,
 	username VARCHAR(25) NOT NULL UNIQUE,
-    CONSTRAINT chk_username CHECK (username NOT IN('playlist'))
+    CONSTRAINT chk_username CHECK (username NOT IN('playlist')),
 	email VARCHAR(50) NOT NULL UNIQUE,
 	password VARCHAR(255) NOT NULL ,
 	date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

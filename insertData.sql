@@ -6,8 +6,5 @@ INSERT INTO Playlists(pid, uid, name, playlist) values(1, 1, 'best playlist ever
 INSERT INTO Playlists(pid, uid, name, playlist) values(2, 1, 'second best playlist ever','[4,1,5]');
 INSERT INTO Playlists(pid, uid, name, playlist) values(3, 1, 'third best playlist ever','[3,2,2]');
 
-INSERT INTO Molecules(mid, link) values(1, 'H2O');
-INSERT INTO Molecules(mid, link) values(2, 'HCl');
-INSERT INTO Molecules(mid, link) values(3, 'NaCl');
-INSERT INTO Molecules(mid, link) values(4, 'N2');
-INSERT INTO Molecules(mid, link) values(5, 'H2O2');
+INSERT INTO Molecules(mid, name, link) values(1, 'RNA', '4cs1.pdb');
+INSERT INTO Molecules(mid, name, link) values(2, 'HYDROLASE', '4d2i.pdb');

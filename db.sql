@@ -32,7 +32,8 @@ CREATE TABLE IF NOT EXISTS Molecules
 (
 	mid Serial PRIMARY KEY,
 	name varchar(255) UNIQUE,
-	link varchar(255) NOT NULL
+	link varchar(255) NOT NULL,
+	data_type varchar(255) NOT NULL
 );
 
 CREATE OR REPLACE FUNCTION insert_schedule() RETURNS trigger AS $$
@@ -44,7 +45,7 @@ $$ LANGUAGE plpgsql;
 
 
 DROP TRIGGER IF EXISTS User_Inserted ON Users;
-CREATE TRIGGER User_Inserted 
+CREATE TRIGGER User_Inserted
 	AFTER INSERT ON Users
 	FOR EACH ROW
 	EXECUTE PROCEDURE insert_schedule();

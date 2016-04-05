@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS Users
 (
 	uid Serial PRIMARY KEY,
 	username VARCHAR(25) NOT NULL UNIQUE,
-    CONSTRAINT chk_username CHECK (username NOT IN('playlist'))
+    CONSTRAINT chk_username CHECK (username NOT IN('playlist')),
 	email VARCHAR(50) NOT NULL UNIQUE,
 	password VARCHAR(255) NOT NULL ,
 	date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -52,3 +52,4 @@ CREATE TRIGGER User_Inserted
 CREATE INDEX IF NOT EXISTS Usernames ON Users USING hash (username);
 CREATE INDEX IF NOT EXISTS Emails ON Users USING hash (email);
 CREATE INDEX IF NOT EXISTS UserPlaylists ON Playlists USING hash (uid);
+CREATE INDEX IF NOT EXISTS MoleculeNames ON Molecules USING btree (name);

@@ -6,9 +6,10 @@ CREATE TABLE IF NOT EXISTS Users
 	email VARCHAR(50) NOT NULL UNIQUE,
 	password VARCHAR(255) NOT NULL ,
 	date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	validation_url varchar (255) NOT NULL,
+	validation_url varchar (30) NOT NULL,
 	validated BOOLEAN DEFAULT FALSE,
-	location VARCHAR(100)
+	location VARCHAR(50),
+	password_reset_key VARCHAR(30)
 );
 
 CREATE TABLE IF NOT EXISTS Schedule
@@ -31,14 +32,14 @@ CREATE TABLE IF NOT EXISTS Playlists
 CREATE TABLE IF NOT EXISTS Molecules
 (
 	mid Serial PRIMARY KEY,
-	name varchar(255) UNIQUE,
+	name varchar(100) UNIQUE,
 	link varchar(255) NOT NULL,
-	data_type varchar(255) NOT NULL
+	data_type varchar(10) NOT NULL
 );
 
 CREATE OR REPLACE FUNCTION insert_schedule() RETURNS trigger AS $$
     BEGIN
-        INSERT INTO Schedule(uid, schedule) VALUES(NEW.uid, '[]');
+        INSERT INTO Schedule(uid, schedule) VALUES(NEW.uid, '{}');
         RETURN NEW;
     END;
 $$ LANGUAGE plpgsql;

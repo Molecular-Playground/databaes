@@ -12,6 +12,11 @@ CREATE TABLE IF NOT EXISTS Users
 	password_reset_key VARCHAR(30)
 );
 
+CREATE TABLE IF NOT EXISTS Admin
+(
+	uid int REFERENCES Users(uid) ON DELETE CASCADE
+);
+
 CREATE TABLE IF NOT EXISTS Schedule
 (
 	sid Serial PRIMARY KEY,
@@ -55,3 +60,4 @@ CREATE INDEX IF NOT EXISTS Usernames ON Users USING hash (username);
 CREATE INDEX IF NOT EXISTS Emails ON Users USING hash (email);
 CREATE INDEX IF NOT EXISTS UserPlaylists ON Playlists USING hash (uid);
 CREATE INDEX IF NOT EXISTS MoleculeNames ON Molecules USING btree (name);
+CREATE INDEX IF NOT EXISTS AdminID ON Admin USING btree (uid);
